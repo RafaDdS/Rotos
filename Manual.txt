@@ -1,0 +1,4 @@
+Click esquerdo retorna a cor daquele pixel e tenta isolar-lo (Não isola)
+Click direito exporta a imagem atual para o SVG de nome Teste.
+
+O código ta uma bagunça, boa sorte
