@@ -1,4 +1,4 @@
-Click esquerdo retorna a cor daquele pixel e tenta isolar-lo (Não isola)
-Click direito exporta a imagem atual para o SVG de nome Teste.
+﻿Click esquerdo salva m novo fndo e o remove;
+Click direito exporta a imagem atual para o SVG de nome o.svg;
 
-O código ta uma bagunça, boa sorte
+O código ta menos bagunçado, boa sorte
