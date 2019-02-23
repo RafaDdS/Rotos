@@ -31,7 +31,7 @@ def mouse(evento, x, y, flags, params):
             b.append(v)
             a.sort(key=lambda n: (n[0] - v[0]) ** 2 + (n[1] - v[1]) ** 2, reverse=True)
 
-        linha = svg.shapes.Polyline(points=b)
+        linha = svg.shapes.Polyline(points=b, style="fill-opacity:0;", stroke_width="3", stroke="black")
         saida.add(linha)
 
         saida.save()
@@ -52,19 +52,22 @@ try:
     while 1:
         ret, frameo = cap.read()
 
+        subtrac = cv2.subtract( frameCor , frameo)
 
+        subtrac = cv2.medianBlur(subtrac, 5)
 
-        seguimentado = cv2.subtract( frameCor , frameo)*5
+        frameGray = cv2.cvtColor(subtrac, cv2.COLOR_RGB2GRAY)
 
-        frameGray = cv2.cvtColor(seguimentado, cv2.COLOR_RGB2GRAY)
+        _, seguimentado = cv2.threshold(frameGray, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
-        frameGray = np.float32(frameGray)
+        elemento = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
+        seguimentado = cv2.morphologyEx(seguimentado, cv2.MORPH_CLOSE, elemento)
 
-        cantos = cv2.goodFeaturesToTrack(frameGray, 1000, 0.01, 10)
-        cantos = np.int0(cantos)
+        cantos = cv2.goodFeaturesToTrack(seguimentado, 1000, 0.01, 10)
+        if cantos is not None: cantos = np.int0(cantos)
 
         cv2.imshow('Video', frameo)
-        cv2.imshow('Seguimenado', seguimentado)
+        cv2.imshow('Seguimentado', seguimentado)
 
         k = cv2.waitKey(30)
         if k == 27:
