@@ -68,12 +68,13 @@ def otsuMod(img, n):
 
 
 cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_MODE, cv2.CAP_MODE_YUYV)
+#cap.set(cv2.CAP_PROP_MODE,cv2.CAP_MODE_YUYV)
+cap.set(cv2.CAP_PROP_MODE,3)
 
 cv2.namedWindow("Video")
 cv2.setMouseCallback("Video", mouse)
 
-saida = svg.Drawing('o.svg', profile='tiny')
+saida = svg.Drawing('o.svg', size=(800, 640), profile='full')
 
 _, frameCor = cap.read()
 
@@ -113,6 +114,3 @@ except KeyboardInterrupt:
 
 cap.release()
 cv2.destroyAllWindows()
-
-
-
