@@ -1,0 +1,7 @@
+svgwrite
+PyQt5
+opencv-python
+numpy
+
+# Development
+# pyqt5-tools
