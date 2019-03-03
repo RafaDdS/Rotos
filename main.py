@@ -2,7 +2,6 @@ import numpy as np
 import cv2
 import svgwrite as svg
 import time
-import  asyncio
 
 
 class Seguimentation:
@@ -28,9 +27,8 @@ class Seguimentation:
 
         self.cantos = []
 
-
-
     def loop(self):
+
         ret, self.frameo = self.cap.read()
 
         self.subtrac = cv2.subtract(self.frameCor, self.frameo)
@@ -45,9 +43,12 @@ class Seguimentation:
         self.seguimentado = cv2.morphologyEx(self.seguimentado, cv2.MORPH_CLOSE, elemento)
 
         self.cantos = cv2.goodFeaturesToTrack(self.seguimentado, 1000, 0.01, 1)
-        if self.cantos is not None: cantos = np.int0(self.cantos)
+        if self.cantos is not None:
+            self.cantos = np.int0(self.cantos)
 
-        print(cantos)
+            return self.cantos.tolist()
+        else:
+            return []
 
     def Outline(self):
         a = [i[0] for i in self.cantos.tolist()]
@@ -83,8 +84,6 @@ def mouse(evento, x, y, flags, params):
         time.sleep(1)
 
         instance.Outline()
-
-
 
 
 def otsuMod(img, n):
