@@ -10,3 +10,5 @@ O código ta ficando mais bagunçado, mas mais funcional, boa sorte
 
 falta implementar uma interface de usuario e um ambiente virtual
 ta uma poha ter que instalar as bibliotecas toda vez q abre em outro pc
+
+XD
