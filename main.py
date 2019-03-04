@@ -52,16 +52,17 @@ class Seguimentation:
 
     def order(self):
         a = [i[0] for i in self.cantos.tolist()]
-        a.sort(key=lambda n: (n[0] + n[1]), reverse=True)
-        b = []
+
+        v = min(a, key=lambda n: (n[0] + n[1]))
+        a.remove(v)
+        b = [v]
 
         while a:
-            v = a.pop()
+            v = min(a, key=lambda n: (n[0] - v[0]) ** 2 + (n[1] - v[1]) ** 2)
+            a.remove(v)
             b.append(v)
-            a.sort(key=lambda n: (n[0] - v[0]) ** 2 + (n[1] - v[1]) ** 2, reverse=True)
 
         return b
-
 
     def Outline(self):
 

@@ -50,8 +50,8 @@ class Lines(QWidget):
     def updateLines(self):
 
         self.qp.begin(self)
-        pen = QPen(Qt.black, 2, Qt.SolidLine)
 
+        pen = QPen(Qt.black, 2, Qt.SolidLine)
         self.qp.setPen(pen)
 
         cantos = instance.loop()

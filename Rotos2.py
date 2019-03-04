@@ -11,53 +11,84 @@ class ColorSeg:
         self.cap = cv2.VideoCapture(0)
         self.cap.set(cv2.CAP_PROP_MODE, 3)
 
-        _, self.frameCor = self.cap.read()
+        _, self.frameo = self.cap.read()
+        self.seguimentado = self.frameo
 
-        self.frameo = self.frameCor
+        self.colors = []
+        self.color_limits = [0, 180]
+        self.masks = []
 
-        self.subtrac = self.frameo
-
-        self.frameGray = self.frameo
-
-        self.frameBlur = self.frameo
-
-        img = cv2.cvtColor(self.frameo, cv2.COLOR_BGR2HSV)
-        self.hist = cv2.calcHist([img], [0], None, [256], [0, 256])
-
+        self.planoCor = np.zeros(self.frameo.shape, np.uint8)
+        self.planoCor[:] = (100, 255, 255)
+        self.planoCor = cv2.cvtColor(self.planoCor, cv2.COLOR_HSV2BGR)
 
     def loop(self):
         ret, self.frameo = self.cap.read()
 
         img = cv2.cvtColor(self.frameo, cv2.COLOR_BGR2HSV)
-        self.hist = cv2.calcHist([img], [0], None, [256], [0, 256])
-        img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
-        plt.subplot(121), plt.imshow(img, 'gray')
-        plt.subplot(122), plt.hist(self.hist, 256, [0, 256])
-        plt.show()
 
-        self.frameBlur = cv2.GaussianBlur(self.frameGray, (17, 17), 0)
+        self.seguimentado = np.zeros(self.frameo.shape, np.uint8)
+        self.seguimentado[:] = (0, 0, 0)
+        self.masks = []
 
-        # elemento = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
-        # self.seguimentado = cv2.morphologyEx(self.seguimentado, cv2.MORPH_CLOSE, elemento)
+        for i, color in enumerate(self.colors):
+            print(self.color_limits)
+            mask = cv2.inRange(img, (self.color_limits[i], 10, 10), (self.color_limits[i+1], 255, 255))
+            self.masks.append(mask)
+
+            planoCor = np.zeros(self.frameo.shape, np.uint8)
+            planoCor[:] = tuple(color)
+            planoCor = cv2.cvtColor(planoCor, cv2.COLOR_HSV2BGR)
+
+            cor = cv2.bitwise_and(planoCor, cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+            self.seguimentado = cv2.add(self.seguimentado, cor)
+
+    def new_color(self, color):
+        hue = color[0]
+
+        for i, v in enumerate(self.color_limits):
+            if hue == v:
+
+                self.colors[i] = color
+                break
+
+            if hue > v:
+                continue
+
+            self.colors.insert(i, color)
+            self.color_limits = [0]
+            if len(self.colors) > 1:
+                self.color_limits.extend([(self.colors[j-1][0]+v[0])/2 for j, v in enumerate(self.colors[1:])])
+            self.color_limits.append(180)
+            break
 
 
 def mouse(evento, x, y, flags, params):
-    global frameCor
-    if evento == cv2.EVENT_LBUTTONDOWN:
 
-        cor = instance.frameo[y, x, :]
+    if evento == cv2.EVENT_LBUTTONDOWN:
+        hsv = cv2.cvtColor(instance.frameo, cv2.COLOR_BGR2HSV)
+        cor = hsv[y, x, :]
         print(cor)
+        instance.new_color(cor)
 
 
 if __name__ == "__main__":
 
     instance = ColorSeg()
 
+    cv2.namedWindow("Video")
+    cv2.setMouseCallback("Video", mouse)
+
     try:
         while 1:
             instance.loop()
 
-            # cv2.imshow('Video', instance.hist)
+            if instance.masks:
+                Vi = np.concatenate((instance.frameo, instance.seguimentado), axis=1)
+            else:
+                Vi = instance.frameo
+
+            cv2.imshow('Video', Vi)
 
             k = cv2.waitKey(30)
             if k == 27:
