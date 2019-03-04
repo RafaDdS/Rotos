@@ -4,7 +4,7 @@ echo Hallo meine Freund, this will configure everything in the virtual env XD
 echo.
 pause XD
 echo.
-echo initiate of creation virtual environment
+echo initiate creation of virtual environment
 echo.
 python -m venv env
 echo virtual environment created
