@@ -4,4 +4,4 @@ opencv-python
 numpy
 
 # Development
-# pyqt5-tools
+#pyqt5-tools
