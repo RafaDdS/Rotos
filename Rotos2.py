@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
 import svgwrite as svg
 import time
 
@@ -62,6 +61,11 @@ class ColorSeg:
             self.color_limits.append(180)
             break
 
+    def reset_color(self):
+        self.colors = []
+        self.color_limits = [0, 180]
+
+
 
 def mouse(evento, x, y, flags, params):
 
@@ -70,6 +74,9 @@ def mouse(evento, x, y, flags, params):
         cor = hsv[y, x, :]
         print(cor)
         instance.new_color(cor)
+
+    if evento == cv2.EVENT_RBUTTONDOWN:
+        instance.reset_color()
 
 
 if __name__ == "__main__":
