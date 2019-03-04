@@ -9,6 +9,8 @@ echo.
 python -m venv env
 echo virtual environment created
 echo.
+echo initiate MATRIX (Neo, dont read this)
+echo.
 call .\env\Scripts\activate
 echo virtual env active
 echo.
