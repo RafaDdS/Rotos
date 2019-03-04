@@ -46,11 +46,11 @@ class Seguimentation:
         if self.cantos is not None:
             self.cantos = np.int0(self.cantos)
 
-            return self.cantos.tolist()
+            return self.order()
         else:
             return []
 
-    def Outline(self):
+    def order(self):
         a = [i[0] for i in self.cantos.tolist()]
         a.sort(key=lambda n: (n[0] + n[1]), reverse=True)
         b = []
@@ -60,6 +60,12 @@ class Seguimentation:
             b.append(v)
             a.sort(key=lambda n: (n[0] - v[0]) ** 2 + (n[1] - v[1]) ** 2, reverse=True)
 
+        return b
+
+
+    def Outline(self):
+
+        b = self.order()
         linha = svg.shapes.Polyline(points=b, style="fill-opacity:0;", stroke_width="3", stroke="black")
         self.saida.add(linha)
 

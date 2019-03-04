@@ -38,37 +38,32 @@ class Lines(QWidget):
 
         self.setGeometry(300, 300, 280, 270)
         self.setWindowTitle("Ao vivo")
+        self.qp = QPainter()
         self.show()
-
-
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update)
+        self.timer.start(10)
 
     def paintEvent(self, e):
-        qp = QPainter()
-        qp.begin(self)
-        # self.timer = QTimer()
-        # self.timer.timeout.connect()
-        # self.timer.start(100)
-        self.drawLines(qp)
-        qp.end()
+        self.updateLines()
 
+    def updateLines(self):
 
-
-    def drawLines(self, qp):
+        self.qp.begin(self)
         pen = QPen(Qt.black, 2, Qt.SolidLine)
 
-        qp.setPen(pen)
+        self.qp.setPen(pen)
 
         cantos = instance.loop()
-        print(cantos)
 
         if cantos:
             last = []
             for i in cantos:
                 if last:
-                    qp.drawLine(last[0][0], last[0][1], i[0][0], i[0][1])
+                    self.qp.drawLine(last[0], last[1], i[0], i[1])
                 last = i
 
-
+        self.qp.end()
 
 
 if __name__ == '__main__':
