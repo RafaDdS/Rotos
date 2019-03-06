@@ -12,10 +12,11 @@ echo.
 echo initiate MATRIX (Neo, dont read this)
 echo.
 call .\env\Scripts\activate
-echo virtual env active
+echo MATRIX activated
 echo.
 echo initiate search for dependances
 echo.
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 echo.
 echo dependances installed
