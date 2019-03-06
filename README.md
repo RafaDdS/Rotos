@@ -4,9 +4,12 @@ Automated rotoscopy
 Click esquerdo salva um novo fundo e o remove;
 Click direito exporta a imagem atual para o SVG de nome o.svg;
 
-svg_gui.py abre o svg
+temos um instalador agora, sem mais problemas de abrir em outros pc e n ter as dependencias XD
 
-O código ta ficando mais bagunçado, mas mais funcional, boa sorte
+falta terminar de implementar a interface de usuario e mesclar com o main
 
-falta implementar uma interface de usuario e um ambiente virtual
-ta uma poha ter que instalar as bibliotecas toda vez q abre em outro pc
+tambem falta melhorar um pouco o filtro
+
+cada vez o codigo fica menos legivel, paraalguns isso é um bom sinal...
+
+gut Glück mein Freund

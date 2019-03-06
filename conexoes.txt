@@ -16,3 +16,15 @@ self.retranslateUi(Form)
         self.lineEdit_4.setText(str(self.horizontalSlider_4.value()))
     def setline5(self):
         self.lineEdit_5.setText(str(self.horizontalSlider_5.value()))
+
+		
+		
+		
+		
+		
+		
+		
+		self.svgopen = QtSvg.QSvgWidget(Rotos)
+        self.svgopen.load('o.svg')
+
+        self.svgopen.setObjectName("svg")
