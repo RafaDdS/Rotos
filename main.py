@@ -28,27 +28,36 @@ class Seguimentation:
         self.cantos = []
 
     def loop(self):
+        saida = dict()
 
         ret, self.frameo = self.cap.read()
+        saida["frameo"] = cv2.cvtColor(self.frameo, cv2.COLOR_BGR2RGB)
 
         self.subtrac = cv2.subtract(self.frameCor, self.frameo)
+        saida["subtrac"] = cv2.cvtColor(self.subtrac, cv2.COLOR_BGR2RGB)
 
-        self.frameGray = cv2.cvtColor(self.subtrac, cv2.COLOR_RGB2GRAY)
+        self.frameGray = cv2.cvtColor(self.subtrac, cv2.COLOR_BGR2GRAY)
+        saida["frameGray"] = cv2.cvtColor(self.frameGray, cv2.COLOR_GRAY2BGR)
 
         self.frameBlur = cv2.GaussianBlur(self.frameGray, (17, 17), 0)
+        saida["frameBlur"] = cv2.cvtColor(self.frameBlur, cv2.COLOR_GRAY2RGB)
 
         _, self.seguimentado = cv2.threshold(self.frameBlur, otsuMod(self.frameBlur, 30), 255, cv2.THRESH_BINARY)
+        saida["seguimentado"] = cv2.cvtColor(self.seguimentado, cv2.COLOR_GRAY2RGB)
 
         elemento = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
         self.seguimentado = cv2.morphologyEx(self.seguimentado, cv2.MORPH_CLOSE, elemento)
+        saida["seguimentado2"] = cv2.cvtColor(self.seguimentado, cv2.COLOR_GRAY2RGB)
 
-        self.cantos = cv2.goodFeaturesToTrack(self.seguimentado, 1000, 0.01, 1)
+        self.cantos = cv2.goodFeaturesToTrack(self.seguimentado, 1000, 0.01, 3)
         if self.cantos is not None:
             self.cantos = np.int0(self.cantos)
 
-            return self.order()
+            saida["cantos"] = self.order()
         else:
-            return []
+            saida["cantos"] = []
+
+        return saida
 
     def order(self):
         a = [i[0] for i in self.cantos.tolist()]

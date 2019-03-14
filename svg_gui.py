@@ -38,6 +38,7 @@ class Lines(QWidget):
 
         self.setGeometry(300, 300, 280, 270)
         self.setWindowTitle("Ao vivo")
+        self.data = dict()
         self.qp = QPainter()
         self.show()
         self.timer = QTimer()
@@ -54,7 +55,8 @@ class Lines(QWidget):
         pen = QPen(Qt.black, 2, Qt.SolidLine)
         self.qp.setPen(pen)
 
-        cantos = instance.loop()
+        self.data = instance.loop()
+        cantos = self.data["cantos"]
 
         if cantos:
             last = []

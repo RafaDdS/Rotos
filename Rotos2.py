@@ -24,7 +24,7 @@ class ColorSeg:
     def loop(self):
         ret, self.frameo = self.cap.read()
 
-        img = cv2.cvtColor(self.frameo, cv2.COLOR_BGR2HSV)
+        img = cv2.cvtColor(cv2.GaussianBlur(self.frameo, (5, 5), 5), cv2.COLOR_BGR2HSV)
 
         self.seguimentado = np.zeros(self.frameo.shape, np.uint8)
         self.seguimentado[:] = (0, 0, 0)
@@ -60,6 +60,10 @@ class ColorSeg:
                 self.color_limits.extend([(self.colors[j-1][0]+v[0])/2 for j, v in enumerate(self.colors[1:])])
             self.color_limits.append(180)
             break
+
+        self.color_limits.sort()
+        self.colors.sort(key=lambda a: a[0])
+
 
     def reset_color(self):
         self.colors = []

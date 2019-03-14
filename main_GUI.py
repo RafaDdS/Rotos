@@ -174,6 +174,7 @@ class Ui_Rotos(object):
         self.horizontalSlider_5.valueChanged.connect(self.setline5)
         QtCore.QMetaObject.connectSlotsByName(Rotos)
 
+
     def setline1(self):
         self.lineEdit.setText(str(self.horizontalSlider.value()))
 
@@ -188,6 +189,7 @@ class Ui_Rotos(object):
 
     def setline5(self):
         self.lineEdit_5.setText(str(self.horizontalSlider_5.value()))
+
     def retranslateUi(self, Rotos):
         _translate = QtCore.QCoreApplication.translate
         Rotos.setWindowTitle(_translate("Rotos", "Rotos"))
