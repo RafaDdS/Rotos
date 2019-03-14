@@ -53,7 +53,7 @@ class Seguimentation:
         if self.cantos is not None:
             self.cantos = np.int0(self.cantos)
 
-            saida["cantos"] = self.order()
+            saida["cantos"] = self.order
         else:
             saida["cantos"] = []
 
