@@ -11,7 +11,7 @@ class ui_mod(Ui_Rotos):
 
         self.pushButton.setText("Excluir Background")
         self.pushButton.clicked.connect(lambda: self.instance.ExcludeBackground())
-        self.pushButton.setText("Salvar Outline")
+        self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: self.instance.Outline())
 
         self.timer = n.QtCore.QTimer()
