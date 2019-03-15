@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import spatial
 import cv2
 import svgwrite as svg
 import time
@@ -53,13 +54,26 @@ class Seguimentation:
         if self.cantos is not None:
             self.cantos = np.int0(self.cantos)
 
-            saida["cantos"] = self.order
+            saida["cantos"] = self.order()
         else:
             saida["cantos"] = []
 
         return saida
 
     def order(self):
+        # a = [(i[0][0], i[0][1]) for i in self.cantos.tolist()]
+        #
+        # arv = spatial.KDTree(a)
+        #
+        # v = min(a, key=lambda n: (n[0] + n[1]))
+        #
+        # b = [list(a[v[1]])]
+        #
+        # while a:
+        #     v = arv.query([v])
+        #     arv.data[v[1][0]] = [10000, 10000]
+        #     print(b)
+        #     b.append([a[v[1][0]][0], a[v[1][0]][1]])
         a = [i[0] for i in self.cantos.tolist()]
 
         v = min(a, key=lambda n: (n[0] + n[1]))

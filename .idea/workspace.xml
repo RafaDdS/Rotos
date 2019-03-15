@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/svg_gui.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -26,20 +26,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="183" column="35" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
+            <state relative-caret-position="115">
+              <caret line="226" column="41" selection-start-line="226" selection-start-column="41" selection-end-line="226" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="79" column="15" selection-start-line="79" selection-start-column="15" selection-end-line="79" selection-end-column="15" />
+            <state relative-caret-position="285">
+              <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -90,8 +90,8 @@
       <find>seguimentado</find>
       <find>graphicsView</find>
       <find>graph</find>
-      <find>svg</find>
       <find>salvar</find>
+      <find>svg</find>
     </findStrings>
     <dirStrings>
       <dir>C:\repos\Rotos</dir>
@@ -107,9 +107,9 @@
         <option value="$PROJECT_DIR$/GUI.py" />
         <option value="$PROJECT_DIR$/Rotos2.py" />
         <option value="$PROJECT_DIR$/svg_gui.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Rotexe.py" />
         <option value="$PROJECT_DIR$/main_GUI.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -155,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Rotexe">
+  <component name="RunManager" selected="Python.svg_gui">
     <configuration name="Rotexe" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Rotos" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -328,8 +328,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Rotexe" />
         <item itemvalue="Python.svg_gui" />
+        <item itemvalue="Python.Rotexe" />
         <item itemvalue="Python.main_GUI" />
       </list>
     </recent_temporary>
@@ -411,19 +411,9 @@
     <entry file="file://$PROJECT_DIR$/svg_gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="79" column="15" selection-start-line="79" selection-start-column="15" selection-end-line="79" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -450,8 +440,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="183" column="35" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
+        <state relative-caret-position="115">
+          <caret line="226" column="41" selection-start-line="226" selection-start-column="41" selection-end-line="226" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
