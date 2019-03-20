@@ -161,7 +161,7 @@ if __name__ == "__main__":
             cv2.imshow('Video', Vi)
 
             k = cv2.waitKey(30)
-            if k == 27:
+            if k == 27 or cv2.getWindowProperty('Video', 0) == -1:
                 break
 
     except KeyboardInterrupt:

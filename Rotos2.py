@@ -13,6 +13,8 @@ class ColorSeg:
         _, self.frameo = self.cap.read()
         self.seguimentado = self.frameo
 
+        self.out = cv2.VideoWriter("Vid.avi", cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (int(self.cap.get(3)), int(self.cap.get(4))))
+
         self.colors = []
         self.color_limits = [0, 180]
         self.masks = []
@@ -42,6 +44,8 @@ class ColorSeg:
             cor = cv2.bitwise_and(planoCor, cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
             self.seguimentado = cv2.add(self.seguimentado, cor)
 
+        self.out.write(self.seguimentado)
+
     def new_color(self, color):
         hue = color[0]
 
@@ -64,11 +68,9 @@ class ColorSeg:
         self.color_limits.sort()
         self.colors.sort(key=lambda a: a[0])
 
-
     def reset_color(self):
         self.colors = []
         self.color_limits = [0, 180]
-
 
 
 def mouse(evento, x, y, flags, params):
@@ -101,12 +103,13 @@ if __name__ == "__main__":
 
             cv2.imshow('Video', Vi)
 
-            k = cv2.waitKey(30)
-            if k == 27:
+            k = cv2.waitKey(1)
+            if k == 27 or cv2.getWindowProperty('Video', 0) == -1:
                 break
 
     except KeyboardInterrupt:
         pass
 
     instance.cap.release()
+    instance.out.release()
     cv2.destroyAllWindows()
