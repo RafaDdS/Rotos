@@ -26,15 +26,28 @@ class ColorSeg:
     def loop(self):
         ret, self.frameo = self.cap.read()
 
-        img = cv2.cvtColor(cv2.GaussianBlur(self.frameo, (5, 5), 5), cv2.COLOR_BGR2HSV)
+        img = cv2.cvtColor(cv2.GaussianBlur(self.frameo, (9, 9), 5), cv2.COLOR_BGR2HSV)
 
         self.seguimentado = np.zeros(self.frameo.shape, np.uint8)
         self.seguimentado[:] = (0, 0, 0)
         self.masks = []
 
+
+
+        # Branco
+        mask = cv2.inRange(img, (0, 0, 180), (180, 50, 255))
+        self.masks.append(mask)
+
+        planoCor = np.zeros(self.frameo.shape, np.uint8)
+        planoCor[:] = (255, 255, 255)
+
+        cor = cv2.bitwise_and(planoCor, cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+        self.seguimentado = cv2.add(self.seguimentado, cor)
+
+        # /Branco
+
         for i, color in enumerate(self.colors):
-            print(self.color_limits)
-            mask = cv2.inRange(img, (self.color_limits[i], 10, 10), (self.color_limits[i+1], 255, 255))
+            mask = cv2.inRange(img, (int(self.color_limits[i]), 50, 35), (int(self.color_limits[i+1]) -1, 255, 200))
             self.masks.append(mask)
 
             planoCor = np.zeros(self.frameo.shape, np.uint8)
