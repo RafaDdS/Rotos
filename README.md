@@ -1,7 +1,7 @@
 # Rotos
 Automated rotoscopy
 
-this software foes Rotoscopy automatically
+this software does Rotoscopy automatically
 
 ## install instructions
 
@@ -21,7 +21,18 @@ return(0)
 }
 
 else{
-notImplemented.yet()
+
+in terminal write "python -m venv env" on the project folder
+
+after runs ./env/Scripts/activate
+
+now you are in the virtual environment
+
+"pip install -r requirements.txt"
+
+done , only runs with "python rotex.py"
+
+return(0)
 }
 
 ## use instructions
@@ -36,6 +47,10 @@ on the botton we have buttons that select the blank background and that actualiz
 ## dev info
 
 cada vez o codigo fica menos legivel, para alguns isso é um bom sinal...
+
+edit the requirements.txt for installing the devellopers dependances
+
+any help is wellcome!
 
 gut Glück mein Freund
 
