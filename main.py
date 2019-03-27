@@ -1,5 +1,5 @@
 import numpy as np
-from scipy import spatial
+#from scipy import spatial
 import cv2
 import svgwrite as svg
 import time

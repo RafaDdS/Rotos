@@ -216,3 +216,7 @@ dmypy.json
 # End of https://www.gitignore.io/api/python,pycharm,visualstudiocode
 
 .idea/workspace.xml
+.vs/ProjectSettings.json
+.vs/Rotos/v15/.suo
+*.sqlite
+*.json

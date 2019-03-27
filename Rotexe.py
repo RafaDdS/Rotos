@@ -3,6 +3,22 @@ import PyQt5 as n
 from PyQt5 import QtSvg
 from main import Seguimentation
 
+def NewColor(C1, C2, C3):
+	palette = n.QtGui.QPalette()
+
+	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+	brush.setStyle(n.QtCore.Qt.SolidPattern)
+	palette.setBrush(n.QtGui.QPalette.Active, n.QtGui.QPalette.Base, brush)
+
+	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+	brush.setStyle(n.QtCore.Qt.SolidPattern)
+	palette.setBrush(n.QtGui.QPalette.Inactive, n.QtGui.QPalette.Base, brush)
+
+	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+	brush.setStyle(n.QtCore.Qt.SolidPattern)
+	palette.setBrush(n.QtGui.QPalette.Disabled, n.QtGui.QPalette.Base, brush)
+	return palette
+
 class ui_mod(Ui_Rotos):
 
     def __init__(self, R):
@@ -22,16 +38,16 @@ class ui_mod(Ui_Rotos):
         self.timer.timeout.connect(self.atualizar_imagens)
         self.timer.start(10)
 
-        self.horizontalSlider.valueChanged.connect(
-            lambda: self.lineEdit.setText(str(self.horizontalSlider.value())))
-        self.horizontalSlider_2.valueChanged.connect(
-            lambda: self.lineEdit_2.setText(str(self.horizontalSlider_2.value())))
-        self.horizontalSlider_3.valueChanged.connect(
-            lambda: self.lineEdit_3.setText(str(self.horizontalSlider_3.value())))
-        self.horizontalSlider_4.valueChanged.connect(
-            lambda: self.lineEdit_4.setText(str(self.horizontalSlider_4.value())))
-        self.horizontalSlider_5.valueChanged.connect(
-            lambda: self.lineEdit_5.setText(str(self.horizontalSlider_5.value())))
+        self.horizontalSlider.valueChanged.connect(lambda: self.lineEdit.setText(str(self.horizontalSlider.value())))
+        self.horizontalSlider_2.valueChanged.connect(lambda: self.lineEdit_2.setText(str(self.horizontalSlider_2.value())))
+        self.horizontalSlider_3.valueChanged.connect(lambda: self.lineEdit_3.setText(str(self.horizontalSlider_3.value())))
+        self.horizontalSlider_4.valueChanged.connect(lambda: self.lineEdit_4.setText(str(self.horizontalSlider_4.value())))
+        self.horizontalSlider_5.valueChanged.connect(lambda: self.lineEdit_5.setText(str(self.horizontalSlider_5.value())))
+        self.plainTextEdit.setPalette(NewColor(132, 231, 11))
+        self.comboBox_2.addItem("")
+        self.comboBox_2.setItemText(0, "cor1")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.setItemText(1, "cor2")
 
     def atualizar_imagens(self):
         self.dados = self.instance.loop()
