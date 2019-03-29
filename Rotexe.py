@@ -5,7 +5,7 @@ from main import Seguimentation
 from Rotos2 import ColorSeg
 
 
-cor = n.QtGui.QColor(0, 0, 0)
+color = n.QtGui.QColor(0, 0, 0)
 
 def NewColor(C1, C2, C3):
     palette = n.QtGui.QPalette()
@@ -24,10 +24,6 @@ def NewColor(C1, C2, C3):
     return palette
 
 
-
-
-
-
 class ui_mod(Ui_Rotos):
 
     def __init__(self, R):
@@ -43,7 +39,7 @@ class ui_mod(Ui_Rotos):
         self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: (self.instance.Outline(), self.graphicsView.load('o.svg')))
 
-        self.pushButton_4.clicked.connect(self.color_picker)
+        self.pushButton_4.clicked.connect(self.colorPicker)
 
         self.timer = n.QtCore.QTimer()
         self.timer.timeout.connect(self.atualizar_imagens)
@@ -74,7 +70,8 @@ class ui_mod(Ui_Rotos):
         scene.addPixmap(pixmap)
         self.graphicsView_3.setScene(scene)
 
-
+    def colorPicker(selfself):
+        color = n.QtWidgets.QColorDialog.getColor()
 
 def converer_imagem(cvImg):
     height, width, channel = cvImg.shape
