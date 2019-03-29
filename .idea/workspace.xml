@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="251" column="61" selection-start-line="251" selection-start-column="55" selection-end-line="251" selection-end-column="61" />
+            <state relative-caret-position="285">
+              <caret line="223" column="18" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -26,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Rotexe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
+            <state relative-caret-position="258">
+              <caret line="59" column="28" lean-forward="true" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -53,12 +53,13 @@
       <find>graphics</find>
       <find>seguimentado</find>
       <find>graphicsView</find>
-      <find>graph</find>
       <find>svg</find>
       <find>salvar</find>
-      <find>dele</find>
       <find>NewColor</find>
       <find>change</find>
+      <find>dele</find>
+      <find>graph</find>
+      <find>nam</find>
     </findStrings>
     <dirStrings>
       <dir>C:\repos\Rotos</dir>
@@ -322,8 +323,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.104477614" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32869378" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34796575" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39772728" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32954547" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32569557" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.3254818" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946696" weight="0.3254818" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.104477614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -343,27 +364,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.41734862" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3289689" />
-      <window_info anchor="right" id="R Graphics" order="0" />
-      <window_info anchor="right" id="R Packages" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
@@ -419,15 +419,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="251" column="61" selection-start-line="251" selection-start-column="55" selection-end-line="251" selection-end-column="61" />
+        <state relative-caret-position="285">
+          <caret line="223" column="18" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Rotexe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
+        <state relative-caret-position="258">
+          <caret line="59" column="28" lean-forward="true" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>

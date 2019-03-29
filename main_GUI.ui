@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>780</width>
-    <height>595</height>
+    <height>621</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -87,6 +87,11 @@
          <string>seguimentado2</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>CodigoCor</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="1" column="2">
@@ -139,13 +144,15 @@
         <bool>false</bool>
        </property>
        <property name="currentText">
-        <string notr="true">resdfgtrdfhtgdfrjktrur5tfujfr6u6ftkur6jftnyguh</string>
+        <string notr="true"/>
        </property>
-       <item>
-        <property name="text">
-         <string>resdfgtrdfhtgdfrjktrur5tfujfr6u6ftkur6jftnyguh</string>
-        </property>
-       </item>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string>Change Color</string>
+       </property>
       </widget>
      </item>
      <item row="0" column="1" rowspan="2">
@@ -181,23 +188,9 @@
       </widget>
      </item>
      <item row="2" column="0" colspan="2">
-      <widget class="QSlider" name="horizontalSlider_6">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0" colspan="2">
       <widget class="QPushButton" name="pushButton_5">
        <property name="text">
         <string>Delete Color</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0" colspan="2">
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string>Change Color</string>
        </property>
       </widget>
      </item>

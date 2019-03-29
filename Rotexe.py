@@ -39,6 +39,7 @@ class ui_mod(Ui_Rotos):
         self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: (self.instance.Outline(), self.graphicsView.load('o.svg')))
 
+        self.pushButton_5.clicked.connect(lambda: self.comboBox_2.removeItem(self.comboBox_2.currentIndex()))
         self.pushButton_6.clicked.connect(self.colorPicker)
 
         self.timer = n.QtCore.QTimer()
@@ -51,16 +52,24 @@ class ui_mod(Ui_Rotos):
         self.horizontalSlider_4.valueChanged.connect(lambda: self.lineEdit_4.setText(str(self.horizontalSlider_4.value())))
         self.horizontalSlider_5.valueChanged.connect(lambda: self.lineEdit_5.setText(str(self.horizontalSlider_5.value())))
         self.plainTextEdit.setPalette(NewColor(color))
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setItemText(0, "cor1")
-        self.comboBox_2.setItemText(1, "cor2")
+
+        self.graphicsView_2.mousePressEvent = self.getPixel
+
+    def getPixel(self, event):
+        xx = event.pos().x()
+        yy = event.pos().y()
+        cc = self.qimg.pixel(xx, yy)
+        c_obj = n.QtGui.QColor(cc)
+        self.comboBox_2.addItem(c_obj.name())
+        self.plainTextEdit.setPalette(NewColor(c_obj))
+        self.comboBox_2.setCurrentIndex(self.comboBox_2.count()-1)
 
     def atualizar_imagens(self):
         self.dados = self.instance.loop(str(self.comboBox.currentText()))
 
         scene = n.QtWidgets.QGraphicsScene()
-        qimg = converter_imagem(self.dados["frameo"])
-        pixmap = n.QtGui.QPixmap.fromImage(qimg)
+        self.qimg = converter_imagem(self.dados["frameo"])
+        pixmap = n.QtGui.QPixmap.fromImage(self.qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_2.setScene(scene)
 
