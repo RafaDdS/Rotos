@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da8bc2-3590-4677-bd62-d1947ba73e97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Rotos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rotos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rotexe.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rotexe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/o.svg" beforeDir="false" afterPath="$PROJECT_DIR$/o.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_GUI.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main_GUI.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="261" column="25" selection-start-line="261" selection-start-column="13" selection-end-line="261" selection-end-column="25" />
+            <state relative-caret-position="176">
+              <caret line="251" column="61" selection-start-line="251" selection-start-column="55" selection-end-line="251" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -28,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Rotexe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+            <state relative-caret-position="394">
+              <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -59,6 +57,8 @@
       <find>svg</find>
       <find>salvar</find>
       <find>dele</find>
+      <find>NewColor</find>
+      <find>change</find>
     </findStrings>
     <dirStrings>
       <dir>C:\repos\Rotos</dir>
@@ -328,7 +328,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32869378" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34796575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39772728" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -419,15 +419,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="261" column="25" selection-start-line="261" selection-start-column="13" selection-end-line="261" selection-end-column="25" />
+        <state relative-caret-position="176">
+          <caret line="251" column="61" selection-start-line="251" selection-start-column="55" selection-end-line="251" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Rotexe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+        <state relative-caret-position="394">
+          <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>

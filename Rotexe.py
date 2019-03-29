@@ -5,20 +5,20 @@ from main import Seguimentation
 from Rotos2 import ColorSeg
 
 
-color = n.QtGui.QColor(0, 0, 0)
+color = n.QtGui.QColor("green")
 
-def NewColor(C1, C2, C3):
+def NewColor(AAA):
     palette = n.QtGui.QPalette()
 
-    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush = n.QtGui.QBrush(AAA)
     brush.setStyle(n.QtCore.Qt.SolidPattern)
     palette.setBrush(n.QtGui.QPalette.Active, n.QtGui.QPalette.Base, brush)
 
-    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush = n.QtGui.QBrush(AAA)
     brush.setStyle(n.QtCore.Qt.SolidPattern)
     palette.setBrush(n.QtGui.QPalette.Inactive, n.QtGui.QPalette.Base, brush)
 
-    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush = n.QtGui.QBrush(AAA)
     brush.setStyle(n.QtCore.Qt.SolidPattern)
     palette.setBrush(n.QtGui.QPalette.Disabled, n.QtGui.QPalette.Base, brush)
     return palette
@@ -39,7 +39,7 @@ class ui_mod(Ui_Rotos):
         self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: (self.instance.Outline(), self.graphicsView.load('o.svg')))
 
-        self.pushButton_4.clicked.connect(self.colorPicker)
+        self.pushButton_6.clicked.connect(self.colorPicker)
 
         self.timer = n.QtCore.QTimer()
         self.timer.timeout.connect(self.atualizar_imagens)
@@ -50,7 +50,7 @@ class ui_mod(Ui_Rotos):
         self.horizontalSlider_3.valueChanged.connect(lambda: self.lineEdit_3.setText(str(self.horizontalSlider_3.value())))
         self.horizontalSlider_4.valueChanged.connect(lambda: self.lineEdit_4.setText(str(self.horizontalSlider_4.value())))
         self.horizontalSlider_5.valueChanged.connect(lambda: self.lineEdit_5.setText(str(self.horizontalSlider_5.value())))
-        self.plainTextEdit.setPalette(NewColor(132, 231, 11))
+        self.plainTextEdit.setPalette(NewColor(color))
         self.comboBox_2.addItem("")
         self.comboBox_2.setItemText(0, "cor1")
         self.comboBox_2.setItemText(1, "cor2")
@@ -59,21 +59,23 @@ class ui_mod(Ui_Rotos):
         self.dados = self.instance.loop(str(self.comboBox.currentText()))
 
         scene = n.QtWidgets.QGraphicsScene()
-        qimg = converer_imagem(self.dados["frameo"])
+        qimg = converter_imagem(self.dados["frameo"])
         pixmap = n.QtGui.QPixmap.fromImage(qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_2.setScene(scene)
 
         scene = n.QtWidgets.QGraphicsScene()
-        qimg = converer_imagem(self.dados[str(self.comboBox.currentText())])
+        qimg = converter_imagem(self.dados[str(self.comboBox.currentText())])
         pixmap = n.QtGui.QPixmap.fromImage(qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_3.setScene(scene)
 
-    def colorPicker(selfself):
+    def colorPicker(self):
         color = n.QtWidgets.QColorDialog.getColor()
+        self.plainTextEdit.setPalette(NewColor(color))
+        self.comboBox_2.setItemText(self.comboBox_2.currentIndex(), color.name())
 
-def converer_imagem(cvImg):
+def converter_imagem(cvImg):
     height, width, channel = cvImg.shape
     bytesPerLine = 3 * width
     return n.QtGui.QImage(cvImg.data, width, height, bytesPerLine, n.QtGui.QImage.Format_RGB888)
