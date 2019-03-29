@@ -2,22 +2,24 @@ from main_GUI import Ui_Rotos
 import PyQt5 as n
 from PyQt5 import QtSvg
 from main import Seguimentation
+from Rotos2 import ColorSeg
+
 
 def NewColor(C1, C2, C3):
-	palette = n.QtGui.QPalette()
+    palette = n.QtGui.QPalette()
 
-	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
-	brush.setStyle(n.QtCore.Qt.SolidPattern)
-	palette.setBrush(n.QtGui.QPalette.Active, n.QtGui.QPalette.Base, brush)
+    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush.setStyle(n.QtCore.Qt.SolidPattern)
+    palette.setBrush(n.QtGui.QPalette.Active, n.QtGui.QPalette.Base, brush)
 
-	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
-	brush.setStyle(n.QtCore.Qt.SolidPattern)
-	palette.setBrush(n.QtGui.QPalette.Inactive, n.QtGui.QPalette.Base, brush)
+    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush.setStyle(n.QtCore.Qt.SolidPattern)
+    palette.setBrush(n.QtGui.QPalette.Inactive, n.QtGui.QPalette.Base, brush)
 
-	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
-	brush.setStyle(n.QtCore.Qt.SolidPattern)
-	palette.setBrush(n.QtGui.QPalette.Disabled, n.QtGui.QPalette.Base, brush)
-	return palette
+    brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
+    brush.setStyle(n.QtCore.Qt.SolidPattern)
+    palette.setBrush(n.QtGui.QPalette.Disabled, n.QtGui.QPalette.Base, brush)
+    return palette
 
 class ui_mod(Ui_Rotos):
 
@@ -46,11 +48,10 @@ class ui_mod(Ui_Rotos):
         self.plainTextEdit.setPalette(NewColor(132, 231, 11))
         self.comboBox_2.addItem("")
         self.comboBox_2.setItemText(0, "cor1")
-        self.comboBox_2.addItem("")
         self.comboBox_2.setItemText(1, "cor2")
 
     def atualizar_imagens(self):
-        self.dados = self.instance.loop()
+        self.dados = self.instance.loop(str(self.comboBox.currentText()))
 
         scene = n.QtWidgets.QGraphicsScene()
         qimg = converer_imagem(self.dados["frameo"])
