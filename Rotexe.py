@@ -3,6 +3,8 @@ import PyQt5 as n
 from PyQt5 import QtSvg
 from main import Seguimentation
 
+cor = n.QtGui.QColor(0, 0, 0)
+
 def NewColor(C1, C2, C3):
 	palette = n.QtGui.QPalette()
 
@@ -17,7 +19,13 @@ def NewColor(C1, C2, C3):
 	brush = n.QtGui.QBrush(n.QtGui.QColor(C1, C2, C3))
 	brush.setStyle(n.QtCore.Qt.SolidPattern)
 	palette.setBrush(n.QtGui.QPalette.Disabled, n.QtGui.QPalette.Base, brush)
+
 	return palette
+
+
+
+
+
 
 class ui_mod(Ui_Rotos):
 
@@ -33,6 +41,8 @@ class ui_mod(Ui_Rotos):
         self.pushButton.clicked.connect(lambda: self.instance.ExcludeBackground())
         self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: (self.instance.Outline(), self.graphicsView.load('o.svg')))
+
+        self.pushButton_4.clicked.connect(self.color_picker)
 
         self.timer = n.QtCore.QTimer()
         self.timer.timeout.connect(self.atualizar_imagens)
@@ -63,6 +73,7 @@ class ui_mod(Ui_Rotos):
         pixmap = n.QtGui.QPixmap.fromImage(qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_3.setScene(scene)
+
 
 
 def converer_imagem(cvImg):
