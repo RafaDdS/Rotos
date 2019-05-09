@@ -1,8 +1,8 @@
 from main_GUI import Ui_Rotos
 import PyQt5 as n
 from PyQt5 import QtSvg
-from main import Seguimentation
-from Rotos2 import ColorSeg
+from main import Seguimentation, ColorSeg, Capture
+import numpy as np
 
 
 color = n.QtGui.QColor("green")
@@ -29,8 +29,12 @@ class ui_mod(Ui_Rotos):
     def __init__(self, R):
         self.graphicsView = n.QtSvg.QSvgWidget(R)
         super().setupUi(R)
-        self.instance = Seguimentation()
+        self.cap = Capture()
+
+        self.instance = Seguimentation(self.cap)
+        self.instance2 = ColorSeg(self.cap)
         self.dados = self.instance.loop()
+        self.dados2 = self.instance2.loop()
 
         self.graphicsView.load('o.svg')
 
@@ -38,6 +42,8 @@ class ui_mod(Ui_Rotos):
         self.pushButton.clicked.connect(lambda: self.instance.ExcludeBackground())
         self.pushButton_2.setText("Salvar Outline")
         self.pushButton_2.clicked.connect(lambda: (self.instance.Outline(), self.graphicsView.load('o.svg')))
+        self.pushButton_4.setText("Limpar cores")
+        self.pushButton_4.clicked.connect(lambda: (self.instance2.reset_color(), self.comboBox_2.clear()))
 
         self.pushButton_5.clicked.connect(lambda: self.comboBox_2.removeItem(self.comboBox_2.currentIndex()))
         self.pushButton_6.clicked.connect(self.colorPicker)
@@ -64,17 +70,29 @@ class ui_mod(Ui_Rotos):
         self.plainTextEdit.setPalette(NewColor(c_obj))
         self.comboBox_2.setCurrentIndex(self.comboBox_2.count()-1)
 
+        c_obj = c_obj.toHsv()
+        self.instance2.new_color(np.array([c_obj.hsvHue(), c_obj.hsvSaturation(), 120]))   ## Corrigir
+
     def atualizar_imagens(self):
-        self.dados = self.instance.loop(str(self.comboBox.currentText()))
+        if str(self.comboBox.currentText()) == "CodigoCor":
+            self.dados2 = self.instance2.loop()
+        else:
+            self.dados = self.instance.loop(str(self.comboBox.currentText()))
+
 
         scene = n.QtWidgets.QGraphicsScene()
-        self.qimg = converter_imagem(self.dados["frameo"])
+        self.qimg = converter_imagem(self.cap.frame(True))
         pixmap = n.QtGui.QPixmap.fromImage(self.qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_2.setScene(scene)
 
         scene = n.QtWidgets.QGraphicsScene()
-        qimg = converter_imagem(self.dados[str(self.comboBox.currentText())])
+
+        if str(self.comboBox.currentText()) == "CodigoCor":
+            qimg = converter_imagem(self.dados2["Imagem"])
+        else:
+            qimg = converter_imagem(self.dados[str(self.comboBox.currentText())])
+
         pixmap = n.QtGui.QPixmap.fromImage(qimg)
         scene.addPixmap(pixmap)
         self.graphicsView_3.setScene(scene)

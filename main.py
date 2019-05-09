@@ -4,17 +4,31 @@ import cv2
 import svgwrite as svg
 import time
 
-
-class Seguimentation:
-
+class Capture:
     def __init__(self):
         self.cap = cv2.VideoCapture(0)
         # cap.set(cv2.CAP_PROP_MODE,cv2.CAP_MODE_YUYV)
         self.cap.set(cv2.CAP_PROP_MODE, 3)
 
+        self.out = cv2.VideoWriter("Vid.avi", cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (int(self.cap.get(3)), int(self.cap.get(4))))
+
+    def frame(self, cvt=False):
+        ret, f = self.cap.read()
+        if cvt: f = cv2.cvtColor(f, cv2.COLOR_BGR2RGB)
+        return f
+
+    def gravar(self, i):
+        self.out.write(i)
+
+
+class Seguimentation:
+
+    def __init__(self, cap):
+        self.cap = cap
+
         self.saida = svg.Drawing('o.svg', size=(800, 640), profile='full')
 
-        _, self.frameCor = self.cap.read()
+        self.frameCor = self.cap.frame()
 
         self.frameo = self.frameCor
 
@@ -31,7 +45,7 @@ class Seguimentation:
     def loop(self, stop="N"):
         saida = dict()
 
-        ret, self.frameo = self.cap.read()
+        self.frameo = self.cap.frame()
         saida["frameo"] = cv2.cvtColor(self.frameo, cv2.COLOR_BGR2RGB)
 
         if (stop == "frameo"):
@@ -65,7 +79,7 @@ class Seguimentation:
         self.seguimentado = cv2.morphologyEx(self.seguimentado, cv2.MORPH_CLOSE, elemento)
         saida["seguimentado2"] = cv2.cvtColor(self.seguimentado, cv2.COLOR_GRAY2RGB)
 
-        if (stop == "seguimentado2"):
+        if (stop != "cantos"):
             return saida
 
         self.cantos = cv2.goodFeaturesToTrack(self.seguimentado, 1000, 0.01, 3)
@@ -187,3 +201,86 @@ if __name__ == "__main__":
 
     instance.cap.release()
     cv2.destroyAllWindows()
+
+
+class ColorSeg:
+
+    def __init__(self, cap):
+        self.cap = cap
+
+        self.frameo = self.cap.frame()
+        self.seguimentado = self.frameo
+
+        self.colors = []
+        self.color_limits = [0, 180]
+        self.masks = []
+
+        self.planoCor = np.zeros(self.frameo.shape, np.uint8)
+        self.planoCor[:] = (100, 255, 255)
+        self.planoCor = cv2.cvtColor(self.planoCor, cv2.COLOR_HSV2BGR)
+
+    def loop(self):
+        saida = dict()
+
+        self.frameo = self.cap.frame()
+
+        img = cv2.cvtColor(cv2.GaussianBlur(self.frameo, (9, 9), 5), cv2.COLOR_BGR2HSV)
+
+        self.seguimentado = np.zeros(self.frameo.shape, np.uint8)
+        self.seguimentado[:] = (0, 0, 0)
+        self.masks = []
+
+        # Branco
+        mask = cv2.inRange(img, (0, 0, 180), (180, 50, 255))
+        self.masks.append(mask)
+
+        planoCor = np.zeros(self.frameo.shape, np.uint8)
+        planoCor[:] = (255, 255, 255)
+
+        cor = cv2.bitwise_and(planoCor, cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+        self.seguimentado = cv2.add(self.seguimentado, cor)
+
+        # /Branco
+
+        for i, color in enumerate(self.colors):
+            mask = cv2.inRange(img, (int(self.color_limits[i]), 50, 35), (int(self.color_limits[i+1]) -1, 255, 200))
+            self.masks.append(mask)
+
+            planoCor = np.zeros(self.frameo.shape, np.uint8)
+            planoCor[:] = tuple(color)
+            planoCor = cv2.cvtColor(planoCor, cv2.COLOR_HSV2BGR)
+
+            cor = cv2.bitwise_and(planoCor, cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR))
+            self.seguimentado = cv2.add(self.seguimentado, cor)
+
+        self.cap.gravar(self.seguimentado)
+        saida["Imagem"] = cv2.cvtColor(self.seguimentado, cv2.COLOR_BGR2RGB)
+        return saida
+
+    def new_color(self, color):
+        hue = 1 if color[0] == 0 else color[0]
+
+        for i, v in enumerate(self.color_limits):
+            if hue == v:
+
+                self.colors[i] = color
+                break
+
+            if hue > v:
+                continue
+
+            self.colors.insert(i, color)
+            self.color_limits = [0]
+            if len(self.colors) > 1:
+                self.color_limits.extend([(self.colors[j-1][0]+v[0])/2 for j, v in enumerate(self.colors[1:])])
+            self.color_limits.append(180)
+            break
+
+        self.color_limits.sort()
+        self.colors.sort(key=lambda a: a[0])
+
+    def reset_color(self):
+        self.colors = []
+        self.color_limits = [0, 180]
+
+
