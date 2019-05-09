@@ -7,7 +7,7 @@ this software does Rotoscopy automatically
 
 first clone this repository in a chosen folder on your computer
 
-
+...
 
 if (you are in windows){
 
@@ -21,7 +21,7 @@ installetion complete
 
 return(0)}
 
-
+...
 
 else{
 
