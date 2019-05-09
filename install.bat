@@ -17,7 +17,7 @@ echo.
 echo initiate search for dependances
 echo.
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r .\Dev\requirements.txt
 echo.
 echo dependances installed
 echo.
