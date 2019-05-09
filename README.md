@@ -1,5 +1,5 @@
 # Rotos
-Automated rotoscopy
+Automated rotos-copy
 
 this software does Rotoscopy automatically
 
