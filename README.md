@@ -17,10 +17,11 @@ write "python rotex.py" and run
 
 installetion complete
 
-return(0)
-}
+return(0)}
+
 
 else{
+
 in terminal write "python -m venv env" on the project folder
 
 after runs ./env/Scripts/activate
@@ -31,23 +32,30 @@ now you are in the virtual environment
 
 done , only runs with "python rotex.py"
 
-return(0)
-}
+return(0)}
 
 ## use instructions
 
 left window shows the actual video
+
 right window shows the processed video
+
 you can change the actual video exibit on the right with the selector above
+
 on the botton we have buttons that select the blank background and that actualize the svg file
 
 ## dev info
 
 cada vez o codigo fica menos legivel, para alguns isso é um bom sinal...
+
 edit the requirements.txt for installing the devellopers dependances
+
 any help is wellcome!
+
 gut Glück mein Freund
+
 you will need
+
 buenas noches
 
 # credits
