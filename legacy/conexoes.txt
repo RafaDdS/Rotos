@@ -1,0 +1,30 @@
+self.retranslateUi(Form)
+        self.horizontalSlider.valueChanged.connect(self.setline1)
+        self.horizontalSlider_2.valueChanged.connect(self.setline2)
+        self.horizontalSlider_3.valueChanged.connect(self.setline3)
+        self.horizontalSlider_4.valueChanged.connect(self.setline4)
+        self.horizontalSlider_5.valueChanged.connect(self.setline5)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def setline1(self):
+        self.lineEdit.setText(str(self.horizontalSlider.value()))
+    def setline2(self):
+        self.lineEdit_2.setText(str(self.horizontalSlider_2.value()))
+    def setline3(self):
+        self.lineEdit_3.setText(str(self.horizontalSlider_3.value()))
+    def setline4(self):
+        self.lineEdit_4.setText(str(self.horizontalSlider_4.value()))
+    def setline5(self):
+        self.lineEdit_5.setText(str(self.horizontalSlider_5.value()))
+
+		
+		
+		
+		
+		
+		
+		
+		self.svgopen = QtSvg.QSvgWidget(Rotos)
+        self.svgopen.load('o.svg')
+
+        self.svgopen.setObjectName("svg")
