@@ -7,6 +7,8 @@ this software does Rotoscopy automatically
 
 first clone this repository in a chosen folder on your computer
 
+
+
 if (you are in windows){
 
 open a cmd terminalin the install folder and execute the bash file install.bat
@@ -18,6 +20,7 @@ write "python rotex.py" and run
 installetion complete
 
 return(0)}
+
 
 
 else{
