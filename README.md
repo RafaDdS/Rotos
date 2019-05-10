@@ -27,13 +27,13 @@ else{
 
 in terminal write "python -m venv env" on the project folder
 
-after runs ./env/Scripts/activate
+after runs ./env/bin/activate
 
 now you are in the virtual environment
 
-"pip install -r requirements.txt"
+"pip install -r ./Dev/requirements.txt"
 
-done , only runs with "python rotex.py"
+done, only runs with "python rotex.py"
 
 return(0)}
 
